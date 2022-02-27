@@ -27,6 +27,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.2.0",
     "dotenv": "^16.0.0",
+    "nestjs-rbac": "^1.7.31",
     "passport": "^0.5.2",
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",
