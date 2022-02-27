@@ -2,6 +2,7 @@ import { prop } from '@typegoose/typegoose';
 import { IsString } from 'class-validator';
 
 export class Account {
+  _id: string;
   @IsString()
   @prop({ required: true })
   email: string;
@@ -10,6 +11,8 @@ export class Account {
   @prop({ required: true })
   role: string;
 
+  @prop()
   passwordResetToken: string;
-  passwordGenerationDate: Date;
+  @prop()
+  passwordResetTokenGenerationDate: Date;
 }
