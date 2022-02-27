@@ -8,7 +8,7 @@ export class Account {
   @prop({ required: true })
   password: string;
   @prop({ required: true })
-  roles: string[];
+  role: string;
 
   passwordResetToken: string;
   passwordGenerationDate: Date;

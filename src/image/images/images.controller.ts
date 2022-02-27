@@ -1,11 +1,14 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { RBAcGuard, RBAcPermissions } from 'nestjs-rbac';
 
 @Controller('images')
 export class ImagesController {
-  @UseGuards(AuthGuard('bearer'))
+  @RBAcPermissions('images@list')
+  @UseGuards(AuthGuard('jwt'), RBAcGuard)
   @Get()
-  list() {
+  list(@Req() req: any) {
+    console.log(req.user);
     return '';
   }
 }

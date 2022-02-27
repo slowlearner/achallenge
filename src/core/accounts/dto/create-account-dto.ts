@@ -31,5 +31,5 @@ export class CreateAccountDto {
   @Validate(PasswordValidation, [passwordRequirement])
   @ApiProperty()
   password: string;
-  roles?: string[];
+  role?: string;
 }
