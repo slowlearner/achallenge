@@ -1,0 +1,47 @@
+version: '2'
+services:
+  mongodb:
+    # command: mongod --repair
+    image: mongo:latest
+    # image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./tmp/mongodb/data:/data/db
+    networks:
+      main:
+        aliases:
+          - mongo
+          - mongodb
+  # redis:
+  #   image: redis
+  #   ports:
+  #     - '6379:6379'
+  #   networks:
+  #     main:
+  #       aliases:
+  #         - redis
+  # influxdb:
+  #   image: influxdb:1.7.10
+  #   volumes:
+  #     - ./docker/influxdb.conf:/etc/influxdb/influxdb.conf
+  #   ports:
+  #     - '8086:8086'
+  #     - '8087:8087'
+  #   networks:
+  #     main:
+  #       aliases:
+  #         - influxdb
+  # chronograf:
+  #   command:
+  #     - chronograf
+  #     - --influxdb-url=http://influxdb:8086
+  #   image: chronograf
+  #   ports:
+  #     - '8888:8888'
+  #   networks:
+  #     main:
+  #       aliases:
+  #         - influxdb
+networks:
+  main:
