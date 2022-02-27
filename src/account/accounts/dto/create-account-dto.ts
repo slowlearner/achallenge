@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsEmail,
   IsNotEmpty,
@@ -23,10 +24,12 @@ export class CreateAccountDto {
     message: 'Account already exists',
   })
   @IsEmail()
+  @ApiProperty()
   email: string;
   @IsNotEmpty()
   @MinLength(8)
   @Validate(PasswordValidation, [passwordRequirement])
+  @ApiProperty()
   password: string;
   roles?: string[];
 }

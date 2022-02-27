@@ -9,10 +9,9 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Challenge API Documentation')
-    .setDescription('The cats API description')
+    .setTitle('24 hour challenge API Documentation')
+    .setDescription('24 hour challenge.')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
   app.useGlobalPipes(new ValidationPipe());
   const document = SwaggerModule.createDocument(app, config);
