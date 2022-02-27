@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { AccountsService } from 'src/core/accounts/accounts.service';
 import * as bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from 'src/core/constants';
-import { Account } from 'src/core/accounts/account.model';
+import { Account } from 'src/core/accounts/models/account.model';
 
 @Injectable()
 export class AuthService {

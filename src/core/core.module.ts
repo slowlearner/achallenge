@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypegooseModule } from 'nestjs-typegoose';
-import { Account } from './accounts/account.model';
+import { Account } from './accounts/models/account.model';
 import { AccountsService } from './accounts/accounts.service';
 import { JwtStrategy } from './auth/jwt.strategy';
 import { ConfigService } from './config/config.service';

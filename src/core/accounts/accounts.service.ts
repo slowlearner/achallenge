@@ -3,7 +3,7 @@ require('dotenv').config();
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { Account } from './account.model';
+import { Account } from './models/account.model';
 import { CreateAccountDto } from './dto/create-account-dto';
 import * as bcrypt from 'bcrypt';
 import { SALT_ROUNDS } from 'src/core/constants';
