@@ -9,4 +9,7 @@ export class Account {
   password: string;
   @prop({ required: true })
   roles: string[];
+
+  passwordResetToken: string;
+  passwordGenerationDate: Date;
 }

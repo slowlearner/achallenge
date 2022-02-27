@@ -23,7 +23,7 @@ export class AccountsService {
 
     return await createdAccount.save();
   }
-  async getByEmail(email: string): Promise<Account> {
+  async findByEmail(email: string): Promise<Account> {
     return await this.accountModel.findOne({
       email: email,
     });
