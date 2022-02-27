@@ -1,15 +1,11 @@
 name: Development Pipeline
-on:
-  push:
-    tags:
-      - release-*
+on: [pull_request]
 env:
   IMAGE_TAG: latest
   ECR_REGISTRY: dockerhub.com
   ECR_REPOSITORY: achallenge
 jobs:
   build:
-    environment: production
     name: build
     runs-on: ubuntu-latest
     steps:
@@ -19,14 +15,3 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-  deploy:
-    environment: production
-    needs: [build]
-    name: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: package
-        run: |
-          echo "deploying"
