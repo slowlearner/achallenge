@@ -1,0 +1,17 @@
+name: Development Pipeline
+on: [pull_request]
+env:
+  IMAGE_TAG: latest
+  ECR_REGISTRY: dockerhub.com
+  ECR_REPOSITORY: achallenge
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: package
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
