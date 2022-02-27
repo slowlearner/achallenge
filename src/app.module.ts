@@ -8,6 +8,7 @@ import { logger, LoggerEvent } from './core/logger';
 import { RBAcModule } from 'nestjs-rbac';
 import { RBAC } from './core/rbac';
 import { JwtModule } from '@nestjs/jwt';
+import { SendGridModule } from '@ntegral/nestjs-sendgrid';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const mongoose = require('mongoose');
@@ -32,6 +33,9 @@ mongoose.plugin(logExecutionTime, {
 });
 @Module({
   imports: [
+    SendGridModule.forRoot({
+      apiKey: process.env.SENDGRID_API_KEY,
+    }),
     RBAcModule.forRoot(RBAC),
     TypegooseModule.forRoot(`${process.env.MONGODB_URL}`, {}),
     CoreModule,
