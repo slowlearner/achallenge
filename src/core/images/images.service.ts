@@ -29,6 +29,12 @@ export class ImagesService extends BaseService {
     super();
   }
 
+  async delete(id: string): Promise<void> {
+    await this.imageModel.findByIdAndUpdate(this.toObjectId(id), {
+      isDeleted: true,
+    });
+  }
+
   async update(id: string, image: Image): Promise<Image> {
     await this.imageModel.findByIdAndUpdate(this.toObjectId(id), image);
     return await this.imageModel.findById(this.toObjectId(id)).lean();
@@ -40,7 +46,12 @@ export class ImagesService extends BaseService {
           hits: 1,
         },
       });
-      return this.imageModel.findById(this.toObjectId(id)).lean();
+      return this.imageModel
+        .findOne({
+          _id: this.toObjectId(id),
+          isDeleted: false,
+        })
+        .lean();
     } catch (e) {
       return null;
     }

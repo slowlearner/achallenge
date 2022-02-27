@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
   HttpStatus,
@@ -77,6 +78,20 @@ export class ImagesController extends BaseService {
       throw new HttpException(ForbiddenError, HttpStatus.FORBIDDEN);
     }
     return image;
+  }
+
+  @Delete(':id')
+  @RBAcPermissions('images@delete')
+  @UseGuards(AuthGuard('jwt'), RBAcGuard)
+  async del(
+    @Param('id') id: string,
+    @SessionAccount() account: Account,
+  ): Promise<void> {
+    const image = await this.imagesService.getById(id);
+    if (account.role === ROLE_USER && !this.owns(account._id, image)) {
+      throw new HttpException(ForbiddenError, HttpStatus.FORBIDDEN);
+    }
+    await this.imagesService.delete(image._id);
   }
 
   @RBAcPermissions('images@list')

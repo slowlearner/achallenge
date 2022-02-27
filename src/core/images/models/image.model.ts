@@ -14,4 +14,6 @@ export class Image {
   hits: number;
   @prop({ required: true })
   uri: string;
+  @prop({ default: false })
+  isDeleted?: boolean;
 }
