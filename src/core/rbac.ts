@@ -8,7 +8,7 @@ export const RBAC: IStorageRbac = {
   roles: ['administrator', 'user'],
   permissions: {
     images: ['create', 'update', 'delete', 'list'],
-    account: ['create', 'update', 'delete'],
+    accounts: ['create', 'update', 'delete'],
   },
   grants: {
     user: ['images'],
