@@ -21,7 +21,7 @@ import { AccountExistsValidator } from './accounts/validators/account-exists-val
     }),
     JwtModule.register({
       secret: JWT_SECRET,
-      signOptions: { expiresIn: '1h' },
+      signOptions: { expiresIn: process.env.JWT_EXPIRES },
     }),
     TypegooseModule.forFeature([Account]),
   ],

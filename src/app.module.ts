@@ -2,12 +2,11 @@
 require('dotenv').config();
 import { Module } from '@nestjs/common';
 import { CoreModule } from './core/core.module';
-import { ImageModule } from './image/image.module';
+import { ImageModule } from './core/images/images.module';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { logger, LoggerEvent } from './core/logger';
 import { RBAcModule } from 'nestjs-rbac';
 import { RBAC } from './core/rbac';
-import { JwtModule } from '@nestjs/jwt';
 import { SendGridModule } from '@ntegral/nestjs-sendgrid';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
