@@ -1,21 +1,14 @@
-import {
-  Body,
-  Controller,
-  HttpException,
-  HttpStatus,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AccountsService } from '../accounts/accounts.service';
 import { AuthService } from './auth.service';
-import {
-  LoginDto,
-  LoginResponseDto,
-  PasswordResetDto,
-  PasswordResetRequestDto,
-  PasswordResetResponseDto,
-} from './auth.dto';
-import { SUCESS_OR_FAIL } from '../common.interface';
+import { SUCESS_OR_FAIL } from '../common/interfaces';
 import { ApiTags } from '@nestjs/swagger';
+import { LoginDto, LoginResponseDto } from './dto/login.dto';
+import {
+  PasswordResetDto,
+  PasswordResetResponseDto,
+} from './dto/password-reset.dto';
+import { PasswordResetRequestDto } from './dto/password-reset-request.dto';
 
 @ApiTags('Auth')
 @Controller('auth')

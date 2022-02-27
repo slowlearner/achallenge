@@ -11,7 +11,7 @@ import { tmpdir } from 'os';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
 import { Image } from './models/image.model';
-import { Account } from 'src/core/accounts/account.model';
+import { Account } from 'src/core/accounts/models/account.model';
 import { BaseService } from '../common/base.service';
 
 cloudinary.config({

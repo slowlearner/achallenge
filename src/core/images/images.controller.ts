@@ -14,17 +14,14 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { RBAcGuard, RBAcPermissions } from 'nestjs-rbac';
-import { Account } from '../accounts/account.model';
+import { Account } from '../accounts/models/account.model';
 import { BaseService } from '../common/base.service';
 import { ForbiddenError, NotFoundError } from '../common/error';
 import { SessionAccount } from '../common/session-account.decorator';
 import { ROLE_ADMINISTRATOR, ROLE_USER } from '../rbac';
-import {
-  CreateImageDto,
-  ImageListDto,
-  ImageListResponseDto,
-  UpdateImageDto,
-} from './dto/images.dto';
+import { CreateImageDto } from './dto/create-image.dto';
+import { ImageListDto, ImageListResponseDto } from './dto/list-images.dto';
+import { UpdateImageDto } from './dto/update-image.dto';
 import { ImagesService } from './images.service';
 import { Image } from './models/image.model';
 

@@ -2,7 +2,7 @@
 require('dotenv').config();
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypegooseModule } from 'nestjs-typegoose';
-import { Account } from './account.model';
+import { Account } from './models/account.model';
 import { AccountsService } from './accounts.service';
 
 describe('AccountsService', () => {
