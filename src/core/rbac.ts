@@ -23,3 +23,6 @@ export const RBAC: IStorageRbac = {
     // [ASYNC_RBAC_REQUEST_FILTER]: RequestAsyncFilter,
   },
 };
+
+export const ROLE_USER = 'user';
+export const ROLE_ADMINISTRATOR = 'administrator';

@@ -6,4 +6,6 @@ export class CreateAccountDto {
   @IsNotEmpty()
   @MinLength(8)
   password: string;
+
+  roles?: string[];
 }

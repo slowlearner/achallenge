@@ -7,4 +7,6 @@ export class Account {
   email: string;
   @prop({ required: true })
   password: string;
+  @prop({ required: true })
+  roles: string[];
 }
