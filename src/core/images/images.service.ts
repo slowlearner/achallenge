@@ -29,8 +29,21 @@ export class ImagesService extends BaseService {
     super();
   }
 
-  getById(id: string) {
-    return this.imageModel.findById(this.toObjectId(id)).lean();
+  async update(id: string, image: Image): Promise<Image> {
+    await this.imageModel.findByIdAndUpdate(this.toObjectId(id), image);
+    return await this.imageModel.findById(this.toObjectId(id)).lean();
+  }
+  async getById(id: string): Promise<Image> {
+    try {
+      await this.imageModel.findByIdAndUpdate(this.toObjectId(id), {
+        $inc: {
+          hits: 1,
+        },
+      });
+      return this.imageModel.findById(this.toObjectId(id)).lean();
+    } catch (e) {
+      return null;
+    }
   }
   async getRandomPhotos(account: Account, perPage: number) {
     const client = pexels.createClient(process.env.PEXEL_API_KEY);
