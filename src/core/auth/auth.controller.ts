@@ -15,7 +15,9 @@ import {
   PasswordResetResponseDto,
 } from './auth.dto';
 import { SUCESS_OR_FAIL } from '../common.interface';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(

@@ -10,22 +10,28 @@ import * as uuid from 'uuid';
 import { tmpdir } from 'os';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { Image } from '../images/models/image.model';
+import { Image } from './models/image.model';
 import { Account } from 'src/core/accounts/account.model';
+import { BaseService } from '../common/base.service';
 
 cloudinary.config({
-  cloud_name: 'erwin-atuli',
-  api_key: '989766496399891',
-  api_secret: '0lq5scOGZaogfdk7yo0YTADLjeg',
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET,
 });
 
 @Injectable()
-export class ImagesService {
+export class ImagesService extends BaseService {
   constructor(
     @InjectModel(Image)
     private readonly imageModel: ReturnModelType<typeof Image>,
-  ) {}
+  ) {
+    super();
+  }
 
+  getById(id: string) {
+    return this.imageModel.findById(this.toObjectId(id)).lean();
+  }
   async getRandomPhotos(account: Account, perPage: number) {
     const client = pexels.createClient(process.env.PEXEL_API_KEY);
     const photos: any = await client.photos.curated({
