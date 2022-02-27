@@ -17,15 +17,17 @@ export class AccountsService {
   async create(account: CreateAccountDto): Promise<Account> {
     const hash = await bcrypt.hash(account.password, SALT_ROUNDS);
     // automatically assign a user role to a created account
-    account.roles = [ROLE_USER];
+    account.role = ROLE_USER;
     account.password = hash;
     const createdAccount = new this.accountModel(account);
 
     return await createdAccount.save();
   }
   async findByEmail(email: string): Promise<Account> {
-    return await this.accountModel.findOne({
-      email: email,
-    });
+    return await this.accountModel
+      .findOne({
+        email: email,
+      })
+      .lean();
   }
 }
