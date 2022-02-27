@@ -1,4 +1,4 @@
-name: Development Pipeline
+name: Validation Pipeline
 on: [push, pull_request]
 env:
   IMAGE_TAG: latest
